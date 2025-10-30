@@ -4,17 +4,21 @@ Automated web testing framework using **Selenium**, **Pytest**, and **pytest-htm
 
 ---
 
-## 🚀 Features
 
-- Headless browser automation with Selenium
-- Reusable driver setup via Pytest fixtures
-- HTML test reports with `pytest-html`
-- Modular folder structure ready for Page Object Model (POM)
-- Easy environment setup using `requirements.txt` and virtual environment
+
+## 📅 Day 1 – Project Setup & First Working Test
+
+### ✅ Deliverables
+
+- Created public GitHub repo: **webtest-automation**
+- Configured Python virtual environment with required packages
+- Verified environment with a simple sanity test
+- Implemented first Selenium test (Wikipedia homepage)
+- Added `conftest.py` fixture for reusable browser setup
+- Generated HTML test report (`report.html`)
+- Committed and pushed all files to GitHub
 
 ---
-
-
 
 ## 🛠️ Tech Stack
 
