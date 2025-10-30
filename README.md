@@ -4,8 +4,6 @@ Automated web testing framework using **Selenium**, **Pytest**, and **pytest-htm
 
 ---
 
-
-
 ## 📅 Day 1 – Project Setup & First Working Test
 
 ### ✅ Deliverables
@@ -17,6 +15,28 @@ Automated web testing framework using **Selenium**, **Pytest**, and **pytest-htm
 - Added `conftest.py` fixture for reusable browser setup
 - Generated HTML test report (`report.html`)
 - Committed and pushed all files to GitHub
+
+---
+
+## 📅 Day 2 – Build Page Object Model & Multi-Site Tests
+
+### ✅ Deliverables
+
+- Implemented Page Object Model (POM) for scalable UI automation
+- Added tests for:
+  - Wikipedia search flow
+  - Negative login validation (Herokuapp)
+- Introduced parameterisation using `pytest.mark.parametrize`
+- Verified parallel execution with `pytest-xdist`
+- Configured HTML reporting via `pytest.ini`
+
+
+### ⚙️ How to Run
+
+
+```bash
+pytest -n auto -v
+```
 
 ---
 
