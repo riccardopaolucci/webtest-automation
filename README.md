@@ -17,7 +17,6 @@ Automated web testing framework using **Selenium**, **Pytest**, and **pytest-htm
 - Committed and pushed all files to GitHub
 
 ---
-
 ## 📅 Day 2 – Build Page Object Model & Multi-Site Tests
 
 ### ✅ Deliverables
@@ -39,6 +38,30 @@ pytest -n auto -v
 ```
 
 ---
+## 📅 Day 3 – HTML Reporting & API Test Integration
+
+### ✅ Deliverables
+
+- Added HTML test reporting using `pytest-html`
+- Confirmed successful generation of `report.html` for every local run
+- Added `report.html` to `.gitignore` to prevent committing generated artifacts
+- Created Postman collection for GitHub Users API (`https://api.github.com/users/octocat`)
+- Added 2 API test cases:
+  - Status code validation
+  - JSON field validation
+- Exported collection as `api_tests.json` and added it to project root
+- Installed Newman and verified API tests run correctly from terminal
+
+---
+
+### ⚙️ How to Run
+
+```bash
+pytest -n auto --html=report.html --self-contained-html
+newman run api_tests.json
+
+---
+
 
 ## 🛠️ Tech Stack
 
