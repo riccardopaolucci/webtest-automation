@@ -1,0 +1,60 @@
+name: WebTest Automation CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: "0 0 * * *"    # every midnight UTC
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pip-audit
+
+      - name: Run Pytest (Selenium)
+        run: pytest -v --html=report.html --self-contained-html
+
+      - name: Upload Pytest HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-report
+          path: report.html
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Newman
+        run: npm install -g newman newman-reporter-htmlextra
+
+      - name: Run Postman (Newman)
+        run: |
+          mkdir -p newman
+          newman run api_tests.json \
+            --reporters cli,htmlextra \
+            --reporter-htmlextra-export newman/newman-report.html
+
+      - name: Upload Newman report
+        uses: actions/upload-artifact@v4
+        with:
+          name: newman-report
+          path: newman/
+
+      - name: Security audit (pip-audit)
+        run: pip-audit
