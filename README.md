@@ -1,3 +1,5 @@
+![CI](https://github.com/riccardopaolucci/webtest-automation/actions/workflows/ci.yml/badge.svg)
+
 # 🧪 WebTest Automation Suite
 
 Automated web testing framework using **Selenium**, **Pytest**, and **pytest-html** — built to demonstrate modern test automation practices and CI/CD readiness.
@@ -53,7 +55,30 @@ pytest -n auto -v
 - Installed Newman and verified API tests run correctly from terminal
 
 ---
+## 📅 Day 4 – CI/CD Pipeline (GitHub Actions, Artifacts & Security)
 
+### ✅ Deliverables
+
+- Added GitHub Actions CI workflow (`ci.yml`)
+- Configured pipeline to run on:
+  - Pushes to `main`
+  - Pull requests to `main`
+  - Nightly scheduled run (00:00 UTC)
+- Installed Python + Node environments inside CI
+- Ran Selenium UI tests using Pytest with HTML reporting
+- Ran Postman API tests using Newman with HTML reporting
+- Uploaded CI artifacts:
+  - `pytest-report`
+  - `newman-report`
+- Added automated Python dependency audit (`pip-audit`)
+- Enabled GitHub security features:
+  - CodeQL analysis
+  - Dependabot alerts & security updates
+  - Secret scanning
+- Added CI badge to the README
+- Committed and pushed all changes to activate CI
+
+---
 ### ⚙️ How to Run
 
 ```bash
