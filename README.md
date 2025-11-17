@@ -87,6 +87,7 @@ Local smoke test verifies the full suite inside Docker.
 
 # 📂 Project Structure
 
+```text
 webtest-automation/
 │
 ├── .github/
@@ -115,6 +116,7 @@ webtest-automation/
 ├── README.md
 ├── report.html
 └── requirements.txt
+```
 
 ---
 
