@@ -14,6 +14,7 @@ def driver():
     opts.add_argument("--headless=new")
     opts.add_argument("--no-sandbox")
     opts.add_argument("--disable-dev-shm-usage")
+    opts.add_argument("--disable-gpu")
     opts.add_argument("--window-size=1280,800")
 
     chrome_driver_env = os.getenv("CHROME_DRIVER", "/usr/bin/chromedriver")
@@ -26,3 +27,4 @@ def driver():
     drv = webdriver.Chrome(service=service, options=opts)
     yield drv
     drv.quit()
+

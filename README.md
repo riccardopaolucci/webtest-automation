@@ -1,7 +1,8 @@
 # 🧪 WebTest Automation Suite
+
 ![CI](https://github.com/riccardopaolucci/webtest-automation/actions/workflows/ci.yml/badge.svg)
 
-Automated end-to-end testing framework using **Selenium**, **Pytest**, **Newman**, **Docker**, and **GitHub Actions**.  
+Automated end-to-end testing framework using **Selenium**, **Pytest**, **Newman**, **Docker**, and **GitHub Actions**.
 Built to demonstrate a **production-ready** automation pipeline including UI tests, API tests, CI/CD, reporting, and containerisation.
 
 ---
@@ -13,7 +14,7 @@ Built to demonstrate a **production-ready** automation pipeline including UI tes
 - Reusable browser fixture (`conftest.py`)
 - Page Object Model (POM) architecture
 - UI test coverage for:
-  - Wikipedia search flow  
+  - Wikipedia search flow
   - Herokuapp login validation
 - Parallel execution via **pytest-xdist**
 - HTML reporting via **pytest-html**
@@ -31,6 +32,7 @@ Built to demonstrate a **production-ready** automation pipeline including UI tes
 ## 3. **Reporting**
 
 Generates HTML reports for:
+
 - Selenium UI tests → `report.html`
 - Newman API tests → `newman-report.html`
 
@@ -41,19 +43,21 @@ CI artifacts automatically uploaded on every pipeline run.
 ## 4. **CI/CD Pipeline (GitHub Actions)**
 
 Triggers on:
+
 - Push to `main`
 - Pull requests
 - Nightly cron run (00:00 UTC)
 
 Includes:
-- Python + Node setup  
-- Selenium UI tests (headless)  
-- Newman API tests  
-- HTML report uploads  
-- Dependency audit (`pip-audit`)  
-- CodeQL analysis  
-- Dependabot alerts  
-- Secret scanning  
+
+- Python + Node setup
+- Selenium UI tests (headless)
+- Newman API tests
+- HTML report uploads
+- Dependency audit (`pip-audit`)
+- CodeQL analysis
+- Dependabot alerts
+- Secret scanning
 - CI status badge
 
 ---
@@ -61,13 +65,15 @@ Includes:
 ## 5. **Dockerised Test Environment**
 
 Single Docker image that runs:
+
 - **Selenium tests** (Chromium + Chromedriver)
 - **Newman API tests**
 
 Installed inside container:
-- Python 3.11  
-- Node 20  
-- Chromium + drivers  
+
+- Python 3.11
+- Node 20
+- Chromium + drivers
 - Stability flags for headless execution
 
 Local smoke test verifies the full suite inside Docker.
@@ -76,15 +82,28 @@ Local smoke test verifies the full suite inside Docker.
 
 # 🛠 Tech Stack
 
-**Languages:** Python 3.11, Node 20  
-**Frameworks:** Pytest, Selenium WebDriver  
-**Tools:** WebDriverManager, Newman, pytest-xdist, pytest-html  
-**CI/CD:** GitHub Actions, pip-audit, CodeQL, Dependabot  
-**Containerisation:** Docker  
+**Languages:** Python 3.11, Node 20
+**Frameworks:** Pytest, Selenium WebDriver
+**Tools:** WebDriverManager, Newman, pytest-xdist, pytest-html
+**CI/CD:** GitHub Actions, pip-audit, CodeQL, Dependabot
+**Containerisation:** Docker
 **Reports:** pytest-html, newman-reporter-htmlextra
 
 ---
+# ⚙️ Tech Decisions Explained
 
+| **Decision**                          | **Why It Matters (Engineering Reasoning)**                                                                                 |
+| ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| **Python + Pytest**                   | Clean syntax, powerful plugins, enterprise adoption. Fast to write, easy to scale, ideal for CI/CD automation.                   |
+| **Selenium with POM architecture**    | Page Object Model makes tests maintainable, reduces duplication, and mirrors real-world automation frameworks used in companies. |
+| **pytest-xdist (Parallel Execution)** | Distributes tests across CPU cores →**up to 70% faster pipelines** , identical to real DevOps environments.               |
+| **pytest-html**                       | Produces visual, shareable reports for QA/DevOps teams—essential for sprint reviews and debugging.                              |
+| **Postman + Newman**                  | Standard API testing workflow in industry; enables contract testing and integrates naturally with CI.                            |
+| **GitHub Actions CI/CD**              | Runs tests automatically on every push/PR + nightly schedule, proving the project is stable and deployable.                      |
+| **Docker**                            | Guarantees identical test environment across machines; mirrors how tests run in staging/prod.                                    |
+| **pip-audit + CodeQL + Dependabot**   | Security standards used by professional teams—scans vulnerabilities, dependencies, and code quality continuously.               |
+
+---
 # 📂 Project Structure
 
 ```text
@@ -123,16 +142,19 @@ webtest-automation/
 # ▶️ How to Run Tests Locally
 
 ## **UI Tests**
+
 ```bash
 pytest -n auto --html=report.html --self-contained-html
 ```
 
 ## **API Tests**
+
 ```bash
 newman run api_tests.json
 ```
 
 ---
+
 # ▶️ How to Run via Docker
 
 ```bash
