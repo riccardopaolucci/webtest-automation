@@ -58,3 +58,8 @@ jobs:
 
       - name: Security audit (pip-audit)
         run: pip-audit
+
+      - name: Build and run Docker container (smoke test)
+        run: |
+          docker build -t webtest-automation .
+          docker run webtest-automation
