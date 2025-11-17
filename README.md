@@ -132,6 +132,7 @@ pytest -n auto --html=report.html --self-contained-html
 newman run api_tests.json
 ```
 
+---
 # ▶️ How to Run via Docker
 
 ```bash
