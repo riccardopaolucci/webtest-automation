@@ -1,4 +1,5 @@
 # 🧪 WebTest Automation Suite
+![CI](https://github.com/riccardopaolucci/webtest-automation/actions/workflows/ci.yml/badge.svg)
 
 Automated end-to-end testing framework using **Selenium**, **Pytest**, **Newman**, **Docker**, and **GitHub Actions**.  
 Built to demonstrate a **production-ready** automation pipeline including UI tests, API tests, CI/CD, reporting, and containerisation.
