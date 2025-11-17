@@ -78,21 +78,36 @@ pytest -n auto -v
 - Added CI badge to the README
 - Committed and pushed all changes to activate CI
 
----
 ### ⚙️ How to Run
 
 ```bash
 pytest -n auto --html=report.html --self-contained-html
 newman run api_tests.json
+```
+---
+# 📅 Day 5 – Dockerisation, Stability Improvements & Professional README
+
+## ✅ Deliverables
+
+- **Created full Dockerfile** capable of running Selenium UI tests + Newman API tests in one container  
+- **Installed dependencies inside container:** Python 3.11, Node 20, Chromium, Chromedriver, Newman  
+- **Successfully built and ran the Docker container locally** with all tests passing headlessly  
+- **Added Chrome headless stability flags** for Docker execution  
+- **Implemented explicit waits and `safe_find()` retry logic** in Page Object Model (removing flaky tests)  
+- **Added Docker smoke test job to CI workflow** for full pipeline compatibility  
+- **Updated README** with final project documentation, badges, and test instructions  
+- **Committed and pushed all files to GitHub**
 
 ---
 
-
 ## 🛠️ Tech Stack
 
-- **Language:** Python 3.10 +
-- **Frameworks:** Pytest, Selenium
-- **Tools:** WebDriverManager, pytest-html
+- **Languages:** Python 3.11 (3.10+ compatible), Node.js 20 (for Newman)
+- **Test Frameworks:** Pytest, Selenium WebDriver
+- **Test Utilities:** WebDriverManager, pytest-html, pytest-xdist
+- **API Testing:** Postman collections, Newman CLI
+- **CI/CD & Security:** GitHub Actions, pip-audit, CodeQL, Dependabot, secret scanning
+- **Containerisation:** Docker (Chromium + Chromedriver headless setup)
 - **Version Control:** Git & GitHub
 
 ---

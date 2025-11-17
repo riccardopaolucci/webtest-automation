@@ -2,6 +2,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+from utils.waits import safe_find, click_with_retry
+
+
 class LoginPage:
     def __init__(self, driver):
         self.driver = driver
@@ -12,11 +15,24 @@ class LoginPage:
         self.wait = WebDriverWait(self.driver, 10)
 
     def login(self, user, pwd):
-        self.driver.find_element(*self.username).send_keys(user)
-        self.driver.find_element(*self.password).send_keys(pwd)
-        self.driver.find_element(*self.login_btn).click()
+        user_el = safe_find(self.driver, self.username)
+        pwd_el = safe_find(self.driver, self.password)
+
+        if user_el is None or pwd_el is None:
+            raise AssertionError("Login inputs not found on the page")
+
+        user_el.clear()
+        user_el.send_keys(user)
+
+        pwd_el.clear()
+        pwd_el.send_keys(pwd)
+
+        # Use retry logic for stability
+        click_with_retry(self.driver, self.login_btn)
 
     def get_message(self):
-        # wait for the flash message to appear and return its text
         flash_el = self.wait.until(EC.visibility_of_element_located(self.flash))
         return flash_el.text
+
+
+  
