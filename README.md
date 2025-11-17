@@ -2,6 +2,9 @@
 
 # 🧪 WebTest Automation Suite
 
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![Docker](https://img.shields.io/badge/Containerized-Yes-green)
+![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen)
 ![CI](https://github.com/riccardopaolucci/webtest-automation/actions/workflows/ci.yml/badge.svg)
 
 Automated end-to-end testing framework using **Selenium**, **Pytest**, **Newman**, **Docker**, and **GitHub Actions**.
