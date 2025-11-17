@@ -1,121 +1,137 @@
-![CI](https://github.com/riccardopaolucci/webtest-automation/actions/workflows/ci.yml/badge.svg)
-
 # 🧪 WebTest Automation Suite
 
-Automated web testing framework using **Selenium**, **Pytest**, and **pytest-html** — built to demonstrate modern test automation practices and CI/CD readiness.
+Automated end-to-end testing framework using **Selenium**, **Pytest**, **Newman**, **Docker**, and **GitHub Actions**.  
+Built to demonstrate a **production-ready** automation pipeline including UI tests, API tests, CI/CD, reporting, and containerisation.
 
 ---
 
-## 📅 Day 1 – Project Setup & First Working Test
+# 🚀 Features
 
-### ✅ Deliverables
+## 1. **UI Automation (Selenium + Pytest)**
 
-- Created public GitHub repo: **webtest-automation**
-- Configured Python virtual environment with required packages
-- Verified environment with a simple sanity test
-- Implemented first Selenium test (Wikipedia homepage)
-- Added `conftest.py` fixture for reusable browser setup
-- Generated HTML test report (`report.html`)
-- Committed and pushed all files to GitHub
-
----
-## 📅 Day 2 – Build Page Object Model & Multi-Site Tests
-
-### ✅ Deliverables
-
-- Implemented Page Object Model (POM) for scalable UI automation
-- Added tests for:
-  - Wikipedia search flow
-  - Negative login validation (Herokuapp)
-- Introduced parameterisation using `pytest.mark.parametrize`
-- Verified parallel execution with `pytest-xdist`
-- Configured HTML reporting via `pytest.ini`
-
-
-### ⚙️ How to Run
-
-
-```bash
-pytest -n auto -v
-```
+- Reusable browser fixture (`conftest.py`)
+- Page Object Model (POM) architecture
+- UI test coverage for:
+  - Wikipedia search flow  
+  - Herokuapp login validation
+- Parallel execution via **pytest-xdist**
+- HTML reporting via **pytest-html**
 
 ---
-## 📅 Day 3 – HTML Reporting & API Test Integration
 
-### ✅ Deliverables
+## 2. **API Testing (Postman + Newman)**
 
-- Added HTML test reporting using `pytest-html`
-- Confirmed successful generation of `report.html` for every local run
-- Added `report.html` to `.gitignore` to prevent committing generated artifacts
-- Created Postman collection for GitHub Users API (`https://api.github.com/users/octocat`)
-- Added 2 API test cases:
-  - Status code validation
-  - JSON field validation
-- Exported collection as `api_tests.json` and added it to project root
-- Installed Newman and verified API tests run correctly from terminal
+- GitHub Users API Postman collection (`api_tests.json`)
+- Status code + JSON schema validation tests
+- Newman integrated into local runs **and** CI workflow
 
 ---
-## 📅 Day 4 – CI/CD Pipeline (GitHub Actions, Artifacts & Security)
 
-### ✅ Deliverables
+## 3. **Reporting**
 
-- Added GitHub Actions CI workflow (`ci.yml`)
-- Configured pipeline to run on:
-  - Pushes to `main`
-  - Pull requests to `main`
-  - Nightly scheduled run (00:00 UTC)
-- Installed Python + Node environments inside CI
-- Ran Selenium UI tests using Pytest with HTML reporting
-- Ran Postman API tests using Newman with HTML reporting
-- Uploaded CI artifacts:
-  - `pytest-report`
-  - `newman-report`
-- Added automated Python dependency audit (`pip-audit`)
-- Enabled GitHub security features:
-  - CodeQL analysis
-  - Dependabot alerts & security updates
-  - Secret scanning
-- Added CI badge to the README
-- Committed and pushed all changes to activate CI
+Generates HTML reports for:
+- Selenium UI tests → `report.html`
+- Newman API tests → `newman-report.html`
 
-### ⚙️ How to Run
+CI artifacts automatically uploaded on every pipeline run.
 
+---
+
+## 4. **CI/CD Pipeline (GitHub Actions)**
+
+Triggers on:
+- Push to `main`
+- Pull requests
+- Nightly cron run (00:00 UTC)
+
+Includes:
+- Python + Node setup  
+- Selenium UI tests (headless)  
+- Newman API tests  
+- HTML report uploads  
+- Dependency audit (`pip-audit`)  
+- CodeQL analysis  
+- Dependabot alerts  
+- Secret scanning  
+- CI status badge
+
+---
+
+## 5. **Dockerised Test Environment**
+
+Single Docker image that runs:
+- **Selenium tests** (Chromium + Chromedriver)
+- **Newman API tests**
+
+Installed inside container:
+- Python 3.11  
+- Node 20  
+- Chromium + drivers  
+- Stability flags for headless execution
+
+Local smoke test verifies the full suite inside Docker.
+
+---
+
+# 🛠 Tech Stack
+
+**Languages:** Python 3.11, Node 20  
+**Frameworks:** Pytest, Selenium WebDriver  
+**Tools:** WebDriverManager, Newman, pytest-xdist, pytest-html  
+**CI/CD:** GitHub Actions, pip-audit, CodeQL, Dependabot  
+**Containerisation:** Docker  
+**Reports:** pytest-html, newman-reporter-htmlextra
+
+---
+
+# 📂 Project Structure
+
+webtest-automation/
+│
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+│
+├── pages/
+│   ├── login_page.py
+│   └── wikipedia_page.py
+│
+├── tests/
+│   ├── test_login.py
+│   ├── test_open_site.py
+│   ├── test_setup_check.py
+│   └── test_wikipedia.py
+│
+├── utils/
+│   ├── init.py
+│   └── waits.py
+│
+├── api_tests.json
+├── conftest.py
+├── Dockerfile
+├── LICENSE
+├── pytest.ini
+├── README.md
+├── report.html
+└── requirements.txt
+
+---
+
+# ▶️ How to Run Tests Locally
+
+## **UI Tests**
 ```bash
 pytest -n auto --html=report.html --self-contained-html
+```
+
+## **API Tests**
+```bash
 newman run api_tests.json
 ```
----
-# 📅 Day 5 – Dockerisation, Stability Improvements & Professional README
 
-## ✅ Deliverables
+# ▶️ How to Run via Docker
 
-- **Created full Dockerfile** capable of running Selenium UI tests + Newman API tests in one container  
-- **Installed dependencies inside container:** Python 3.11, Node 20, Chromium, Chromedriver, Newman  
-- **Successfully built and ran the Docker container locally** with all tests passing headlessly  
-- **Added Chrome headless stability flags** for Docker execution  
-- **Implemented explicit waits and `safe_find()` retry logic** in Page Object Model (removing flaky tests)  
-- **Added Docker smoke test job to CI workflow** for full pipeline compatibility  
-- **Updated README** with final project documentation, badges, and test instructions  
-- **Committed and pushed all files to GitHub**
-
----
-
-## 🛠️ Tech Stack
-
-- **Languages:** Python 3.11 (3.10+ compatible), Node.js 20 (for Newman)
-- **Test Frameworks:** Pytest, Selenium WebDriver
-- **Test Utilities:** WebDriverManager, pytest-html, pytest-xdist
-- **API Testing:** Postman collections, Newman CLI
-- **CI/CD & Security:** GitHub Actions, pip-audit, CodeQL, Dependabot, secret scanning
-- **Containerisation:** Docker (Chromium + Chromedriver headless setup)
-- **Version Control:** Git & GitHub
-
----
-
-## ⚙️ Setup Instructions
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/riccardopaloucci/webtest-automation.git
-   cd webtest-automation
-   ```
+```bash
+docker build -t webtest .
+docker run --rm webtest
+```
