@@ -1,3 +1,5 @@
+🎥 **Demo:** [Watch 4 minute and 28 seconds walkthrough](https://www.loom.com/share/c323ab4b38174621ab3ef721d0714a69)
+
 # 🧪 WebTest Automation Suite
 
 ![CI](https://github.com/riccardopaolucci/webtest-automation/actions/workflows/ci.yml/badge.svg)
